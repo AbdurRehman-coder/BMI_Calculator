@@ -8,7 +8,6 @@ class MyTheme {
 
     cardColor: Colors.white,
     canvasColor: creamColor,
-    accentColor: Colors.white60,
     appBarTheme: const AppBarTheme(
       color: Colors.white,
       // Icon Theme Data
@@ -38,11 +37,7 @@ class MyTheme {
         ),
 
 
-    // FloatingActionButton theme data for Light
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Theme.of(context).canvasColor,
-      shape: StadiumBorder(),
-    ),
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white38),
   );
 
   // Theme for Dark Screen
@@ -50,7 +45,6 @@ class MyTheme {
 
     canvasColor: Colors.grey[900],
     cardColor: darkBlushColor,
-    accentColor: Colors.black26,
     //app Bar for dar theme
     appBarTheme: const AppBarTheme(
       color: Colors.black,
@@ -80,6 +74,7 @@ class MyTheme {
           color: creamColor,
         ),
       ),
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black26),
 
 
   );

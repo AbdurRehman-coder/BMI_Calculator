@@ -1,7 +1,9 @@
 import 'package:bmi_calculator/Widgets/icon_content.dart';
 import 'package:bmi_calculator/Widgets/reusable_container.dart';
-import 'package:bmi_calculator/Widgets/themes.dart';
 import 'package:flutter/material.dart';
+
+//enum to select male/female as a gender
+enum Gender{ male, female}
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -11,27 +13,12 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  //method for changing the colors
-  void updateColor(int gender){
+  //enum Gender instance, where we will store the selected gender
+  // when user pressed the card
+  Gender? selectedGender;
 
-  }
-
- bool clickable1 = true;
-  bool clickable2 = true;
- void toggleView1(){
-   setState(() {
-     clickable1 = !clickable1;
-   });
- }
-  void toggleView2(){
-    setState(() {
-      clickable2 = !clickable2;
-    });
-  }
   @override
   Widget build(BuildContext context) {
-
-    Color greyClickColor = Theme.of(context).accentColor;
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: Theme.of(context).canvasColor,
@@ -48,41 +35,45 @@ class _InputPageState extends State<InputPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-               child: GestureDetector(
-                 onTap: (){
-                   setState(() {
-                     if(clickable1 == true && clickable2 == false){
-                       clickable1 = true;
-                     }
+                  //Male Card
+               child: ReusableContainer(
+                 cardColor: selectedGender == Gender.male ? Theme.of(context).cardColor :
+                 Theme.of(context).colorScheme.secondary,
 
-                   });
-                 },
-                 child: ReusableContainer(
-                   cardColor: clickable1 ? Theme.of(context).accentColor
-                   : Theme.of(context).cardColor,
-                   cardChild: IconContent(
+                 cardChild: IconContent(
 
-                     icon: Icons.male_sharp,
-                     label: 'MALE',
-                   ),
+                   icon: Icons.male_sharp,
+                   label: 'MALE',
                  ),
+                 onPress:  (){
+                   Future.delayed(Duration.zero, () async {
+                     setState(() {
+                       selectedGender = Gender.male;
+                     });
+                   });
+
+                 },
                ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        toggleView2();
-                      });
-                    },
-                    child: ReusableContainer(
-                      cardColor: clickable2 ? Theme.of(context).accentColor
-                          : Theme.of(context).cardColor,
-                      cardChild: IconContent(
-                        icon: Icons.male_sharp,
-                        label: 'FEMALE',
-                      ),
+                  //Female Card
+                  child: ReusableContainer(
+
+                    cardColor:  selectedGender == Gender.female ? Theme.of(context).cardColor :
+                    Theme.of(context).colorScheme.secondary,
+                    cardChild: IconContent(
+                      icon: Icons.male_sharp,
+                      label: 'FEMALE',
                     ),
+                    onPress:
+                        (){
+                      Future.delayed(Duration.zero, () async {
+                        setState(() {
+                          selectedGender = Gender.female;
+                        });
+                      });
+
+                    },
                   ),
                 ),
               ],
@@ -90,6 +81,9 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableContainer(
+              onPress: (){
+                print('oppress called');
+              },
               cardColor: Theme.of(context).cardColor,
             ),
           ),
@@ -100,11 +94,17 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: ReusableContainer(
+                  onPress: (){
+                    print('oppress called');
+                  },
                   cardColor: Theme.of(context).cardColor,
                 ),
               ),
               Expanded(
                 child: ReusableContainer(
+                  onPress: (){
+                    print('oppress called');
+                  },
                   cardColor: Theme.of(context).cardColor,
                 ),
               ),
