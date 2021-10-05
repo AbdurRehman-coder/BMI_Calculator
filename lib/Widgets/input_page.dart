@@ -2,6 +2,7 @@ import 'package:bmi_calculator/Widgets/icon_content.dart';
 import 'package:bmi_calculator/Widgets/reusable_container.dart';
 import 'package:bmi_calculator/Widgets/slider.dart';
 import 'package:bmi_calculator/Widgets/themes.dart';
+import 'package:bmi_calculator/pages/result_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -32,6 +33,7 @@ class _InputPageState extends State<InputPage> {
             'BMI Calculator',
             style: Theme.of(context).textTheme.headline4,
           ),
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: Column(
@@ -189,17 +191,24 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              height: 50,
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 10),
-              color: Colors.pinkAccent,
-              child: Center(
-                child: Text('CALCULATE',
-                style: Theme.of(context).textTheme.headline4!.copyWith(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold
-                )),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ResultPage()),
+                );
+              },
+              child: Container(
+                height: 70,
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 10),
+                color: Colors.pinkAccent,
+                child: Center(
+                  child: Text('CALCULATE',
+                  style: Theme.of(context).textTheme.headline4!.copyWith(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  )),
+                ),
               ),
             )
           ],

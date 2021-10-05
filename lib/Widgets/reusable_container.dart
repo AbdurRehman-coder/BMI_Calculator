@@ -14,9 +14,7 @@ class ReusableContainer extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         transformAlignment: Alignment.center,
-        // child: Text('Male',
-        //   style: Theme.of(context).textTheme.bodyText1,),
-        margin: const EdgeInsets.all(15),
+        margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: cardColor,
           borderRadius: BorderRadius.circular(15),
