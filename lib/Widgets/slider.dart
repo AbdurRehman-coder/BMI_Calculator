@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 class SliderWidget extends StatefulWidget {
+  int? height = 150;
+
   @override
   State<SliderWidget> createState() => _SliderWidgetState();
 }
 
 class _SliderWidgetState extends State<SliderWidget> {
- int? height = 150;
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _SliderWidgetState extends State<SliderWidget> {
           textBaseline: TextBaseline.alphabetic,
           children: [
             Text(
-          height.toString(),
+          widget.height.toString(),
             style: Theme.of(context).textTheme.headline1,),
             SizedBox( width: 5,),
             Text('cm',
@@ -47,13 +49,13 @@ class _SliderWidgetState extends State<SliderWidget> {
 
           ),
           child: Slider(
-              value: height!.toDouble(),
+              value: widget.height!.toDouble(),
               min: 120,
               max: 220,
               onChanged: (double newValue){
                setState(() {
-                 height = newValue.round();
-                 print(height);
+                 widget.height = newValue.round();
+
                });
 
 

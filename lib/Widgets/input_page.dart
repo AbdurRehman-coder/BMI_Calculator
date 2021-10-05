@@ -2,10 +2,12 @@ import 'package:bmi_calculator/Widgets/icon_content.dart';
 import 'package:bmi_calculator/Widgets/reusable_container.dart';
 import 'package:bmi_calculator/Widgets/slider.dart';
 import 'package:bmi_calculator/Widgets/themes.dart';
+import 'package:bmi_calculator/business_logic/calculator_brain.dart';
 import 'package:bmi_calculator/pages/result_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'circular_custom_button.dart';
 
 //enum to select male/female as a gender
 enum Gender { male, female }
@@ -22,6 +24,7 @@ class _InputPageState extends State<InputPage> {
   // when user pressed the card
   Gender? selectedGender;
   int weight = 60;
+  int? height = SliderWidget().height;
   int age = 19;
 
   @override
@@ -85,9 +88,11 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             Expanded(
+              //Slider Container
               child: ReusableContainer(
                 onPress: () {},
                 cardColor: Theme.of(context).cardColor,
+
                 cardChild: SliderWidget(),
               ),
             ),
@@ -193,8 +198,13 @@ class _InputPageState extends State<InputPage> {
             ),
             GestureDetector(
               onTap: (){
+                CalculatorBrain calBrain = CalculatorBrain(height: height, weight: weight);
                 Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ResultPage()),
+                  context, MaterialPageRoute(builder: (context) => ResultPage(
+                  bmiResult: calBrain.getResult(),
+                  textResult: calBrain.getTextResult(),
+                  interpretation: calBrain.getInterpretation(),
+                )),
                 );
               },
               child: Container(
@@ -213,29 +223,5 @@ class _InputPageState extends State<InputPage> {
             )
           ],
         ));
-  }
-}
-
-class CustomIconButton extends StatelessWidget {
-  CustomIconButton({this.icon, this.onPress});
-  final IconData? icon;
- final Function? onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: onPress as Function(),
-      shape: CircleBorder(),
-      constraints: const BoxConstraints.tightFor(
-
-        width: 40,
-        height: 40,
-      ),
-      fillColor: Colors.grey,
-      child: Icon(
-        icon,
-        color: Theme.of(context).iconTheme.color,
-      ),
-    );
   }
 }
