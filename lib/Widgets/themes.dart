@@ -24,7 +24,11 @@ class MyTheme {
 
     //Text Theme Data for light mode
     textTheme: TextTheme(
-
+      headline1: TextStyle(
+        color: darkBlushColor,
+        fontSize: 50,
+        fontWeight: FontWeight.w900,
+      ),
         headline4: TextStyle(
             color: darkBlushColor,
             fontSize: 20,
@@ -55,13 +59,17 @@ class MyTheme {
       ),
     ),
     // Icon data for every icon
-    iconTheme: IconThemeData(
-      color: creamColor,
+    iconTheme: const IconThemeData(
+      color: Colors.white,
       size: 40,
     ),
     // Text Theme for dark mode
     textTheme: TextTheme(
-
+      headline1: TextStyle(
+        color: Colors.white,
+        fontSize: 50,
+        fontWeight: FontWeight.w900,
+      ),
 
       headline4: TextStyle(
           color: creamColor,
@@ -69,9 +77,9 @@ class MyTheme {
           fontWeight: FontWeight.w400,
         ),
 
-      bodyText1: TextStyle(
+      bodyText1: const TextStyle(
           fontSize: 16,
-          color: creamColor,
+          color: Colors.white70,
         ),
       ),
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black26),

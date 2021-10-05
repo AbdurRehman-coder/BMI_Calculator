@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/Widgets/icon_content.dart';
 import 'package:bmi_calculator/Widgets/reusable_container.dart';
+import 'package:bmi_calculator/Widgets/slider.dart';
 import 'package:flutter/material.dart';
 
 //enum to select male/female as a gender
@@ -62,7 +63,7 @@ class _InputPageState extends State<InputPage> {
                     cardColor:  selectedGender == Gender.female ? Theme.of(context).cardColor :
                     Theme.of(context).colorScheme.secondary,
                     cardChild: IconContent(
-                      icon: Icons.male_sharp,
+                      icon: Icons.female_sharp,
                       label: 'FEMALE',
                     ),
                     onPress:
@@ -82,9 +83,10 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableContainer(
               onPress: (){
-                print('oppress called');
+
               },
               cardColor: Theme.of(context).cardColor,
+              cardChild: SliderWidget(),
             ),
           ),
           Expanded(
