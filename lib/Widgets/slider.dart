@@ -34,20 +34,31 @@ class _SliderWidgetState extends State<SliderWidget> {
           )
           ],
         ),
-        Slider(
-            value: height!.toDouble(),
-            min: 120,
-            max: 220,
-            activeColor: Colors.pinkAccent,
-            inactiveColor: Theme.of(context).colorScheme.secondary,
-            onChanged: (double newValue){
-             setState(() {
-               height = newValue.round();
-               print(height);
-             });
+        SliderTheme(
+          data: SliderThemeData().copyWith(
+            thumbColor: Colors.pink,
+            trackHeight: 1,
+            activeTrackColor: Theme.of(context).colorScheme.primary,
+            inactiveTrackColor: Colors.grey,
+            overlayColor: Colors.red[100],
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 15),
 
 
-            }
+          ),
+          child: Slider(
+              value: height!.toDouble(),
+              min: 120,
+              max: 220,
+              onChanged: (double newValue){
+               setState(() {
+                 height = newValue.round();
+                 print(height);
+               });
+
+
+              }
+          ),
         ),
       ],
     );
