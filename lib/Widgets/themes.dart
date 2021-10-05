@@ -41,7 +41,7 @@ class MyTheme {
         ),
 
 
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white38),
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white38,  primary: Colors.black54),
   );
 
   // Theme for Dark Screen
@@ -82,7 +82,7 @@ class MyTheme {
           color: Colors.white70,
         ),
       ),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black26),
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black26, primary: Colors.white70),
 
 
   );
